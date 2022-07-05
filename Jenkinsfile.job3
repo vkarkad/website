@@ -3,15 +3,15 @@ BUILD_NUM = env.BUILD_NUMBER
 BUILD_DIR = '/opt/jenkins/workspace'
 PUBLIC_IP = ''
 CNTR_PORT = 80
-HOST_PORT = CNTR_PORT + env.BUILD_NUMBER.toInteger()
+HOST_PORT = CNTR_PORT
 IMAGE_NAME = 'web'
 MAJOR_VER = '1'
 IMAGE_VER = MAJOR_VER + '.' + env.BUILD_NUMBER
 
 try {
-  node('test') {
+  node('prod') {
     stage('checkout') {
-      git branch: 'test', url: 'https://github.com/vkarkad/website.git'
+      git branch: 'master', url: 'https://github.com/vkarkad/website.git'
       sh "pwd && ls -la"
     }
     stage('pre-build') {
@@ -41,8 +41,4 @@ try {
   currentBuild.result='FAILURE'
   echo "In catch block: Build result: <<${currentBuild.result}>>"
   throw e
-} finally {
-  echo "In finally block: Build result: <<${currentBuild.result}>>"
-  build job: "post-job"
 }
-
