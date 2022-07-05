@@ -9,7 +9,7 @@ node('test') {
       sh "pwd && ls -la"
   }
   stage('pre-build') {
-      ip_cmd = "ifconfig.co 2>&1"
+      ip_cmd = "curl ifconfig.co 2>&1"
       PUBLIC_IP = sh (script: ip_cmd, returnStdout: true).trim()
       echo "PUBLIC_IP: ${PUBLIC_IP}"
       echo "WORKSPACE: ${dir}"
