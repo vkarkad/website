@@ -19,7 +19,7 @@ node('test') {
     echo "PUBLIC_IP: <<${PUBLIC_IP}>>"
     echo "HOST_PORT: <<${HOST_PORT}>>"
     echo "CNTR_PORT: <<${CNTR_PORT}>>"
-    echo "IMAGE_VER: <<${IMAGE_VER}">>
+    echo "IMAGE_VER: <<${IMAGE_VER}>>"
     echo "WORKSPACE: <<${BUILD_DIR}>>"
     echo "BUILD_NUMBER: <<${BUILD_NUM}>>"
     echo "JOB_BASE_NAME: <<${BUILD_JOB}>>"
