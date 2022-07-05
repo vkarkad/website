@@ -4,7 +4,7 @@ dir = '/opt/jenkins/workspace'
 
 node('test') {
   stage('checkout') {
-      git branch: 'develop', url: 'https://github.com/vkarkad/website'
+      git branch: 'test', url: 'https://github.com/vkarkad/website.git'
       sh "pwd && ls -la"
   }
   stage('pre-build') {
