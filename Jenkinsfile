@@ -1,6 +1,6 @@
 job = env.JOB_BASE_NAME
 num = env.BUILD_NUMBER
-wsp = env.WORKSPACE
+dir = '/opt/jenkins/workspace'
 
 node('test') {
   stage('checkout') {
@@ -14,7 +14,6 @@ node('test') {
   }
   stage('build') {
     sh "cd ${dir}/${job}"
-    sh "sudo docker rm -f \$(sudo docker ps -aq)"
     sh "sudo docker build . -t ${job}"
     sh "sudo docker run -dit --name web${num} -p 81:80 ${job}"
   }
