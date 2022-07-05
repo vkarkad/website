@@ -13,8 +13,8 @@ node('test') {
       echo "JOB_BASE_NAME: ${job}"
   }
   stage('build') {
-    sh "cd ${dir}/${job}"
-    sh "sudo docker build . -t ${job}"
+    sh "cd ${dir}/${job};pwd"
+    sh "sudo docker build -t ${job} ."
     sh "sudo docker run -dit --name web${num} -p 81:80 ${job}"
   }
 }
