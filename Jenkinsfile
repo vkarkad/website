@@ -1,6 +1,7 @@
 job = env.JOB_BASE_NAME
 num = env.BUILD_NUMBER
 dir = '/opt/jenkins/workspace'
+PUBLIC_IP = ''
 
 node('test') {
   stage('checkout') {
@@ -8,6 +9,9 @@ node('test') {
       sh "pwd && ls -la"
   }
   stage('pre-build') {
+      ip_cmd = "ifconfig.co 2>&1"
+      PUBLIC_IP = sh (script: ip_cmd, returnStdout: true).trim()
+      echo "PUBLIC_IP: ${PUBLIC_IP}"
       echo "WORKSPACE: ${dir}"
       echo "BUILD_NUMBER: ${num}"
       echo "JOB_BASE_NAME: ${job}"
