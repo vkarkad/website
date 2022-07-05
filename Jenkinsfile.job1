@@ -8,6 +8,8 @@ IMAGE_NAME = 'web'
 MAJOR_VER = '1'
 IMAGE_VER = MAJOR_VER + '.' + env.BUILD_NUMBER
 
+properties([pipelineTriggers([[$class: 'GitHubPushTrigger'])
+
 try {
   node('test') {
     stage('checkout') {
