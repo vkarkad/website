@@ -2,7 +2,8 @@ job = env.JOB_BASE_NAME
 num = env.BUILD_NUMBER
 dir = '/opt/jenkins/workspace'
 PUBLIC_IP = ''
-HOST_PORT = 80 + env.BUILD_NUMBER
+CNTR_PORT = 80
+HOST_PORT = CNTR_PORT + env.BUILD_NUMBER
 
 node('test') {
   stage('checkout') {
@@ -21,6 +22,6 @@ node('test') {
   stage('build') {
     sh "cd ${dir}/${job};pwd;ls -l;cat -n Dockerfile"
     sh "sudo docker build -t ${job} ."
-    sh "sudo docker run -dit --name web${num} -p 81:80 ${job}"
+    sh "sudo docker run -dit --name web${num} -p ${HOST_PORT}:${CNTR_PORT} ${job}"
   }
 }
