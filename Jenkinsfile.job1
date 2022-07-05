@@ -8,7 +8,6 @@ IMAGE_NAME = 'web'
 MAJOR_VER = '1'
 IMAGE_VER = MAJOR_VER + '.' + env.BUILD_NUMBER
 
-//properties([pipelineTriggers([[$class: 'GitHubPushTrigger'])])
 properties([pipelineTriggers([githubPush()])])
 
 try {
@@ -29,6 +28,7 @@ try {
       echo "JOB_BASE_NAME: <<${BUILD_JOB}>>"
     }
     stage('build') {
+      return
       sh "cd ${BUILD_DIR}/${BUILD_JOB};pwd;ls -l;cat -n Dockerfile"
       IMAGE_TAG = "${BUILD_JOB}:${IMAGE_VER}"
       sh "sudo docker build --tag ${IMAGE_TAG} ."
