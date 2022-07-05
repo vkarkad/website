@@ -37,7 +37,6 @@ try {
   }
   currentBuild.result='SUCCESS'
   echo "In try block: Build result: <<${currentBuild.result}>>"
-  echo "Testing changes on develop branch" //FIXME
 } catch(e) {
   currentBuild.result='FAILURE'
   echo "In catch block: Build result: <<${currentBuild.result}>>"
