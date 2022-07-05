@@ -14,7 +14,7 @@ node('test') {
   }
   stage('build') {
     sh "cd ${dir}/${job}"
-    sh "sudo docker rm -f $(sudo docker ps -aq)"
+    sh "sudo docker rm -f \$(sudo docker ps -aq)"
     sh "sudo docker build . -t ${job}"
     sh "sudo docker run -dit --name web${num} -p 81:80 ${job}"
   }
