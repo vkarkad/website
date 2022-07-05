@@ -26,8 +26,8 @@ node('test') {
   }
   stage('build') {
     sh "cd ${BUILD_DIR}/${BUILD_JOB};pwd;ls -l;cat -n Dockerfile"
-    sh "sudo docker build -t ${BUILD_JOB} ."
-    sh "sudo docker run -dit --name ${IMAGE_NAME}:${IMAGE_VER} -p ${HOST_PORT}:${CNTR_PORT} ${BUILD_JOB}"
+    sh "sudo docker build -t ${BUILD_JOB}:${IMAGE_VER} ."
+    sh "sudo docker run -dit -n ${BUILD_JOB}${BUILD_NUMBER} -p ${HOST_PORT}:${CNTR_PORT} ${BUILD_JOB}"
   }
   stage('publish') {
     echo "Website URL: http://${PUBLIC_IP}:${HOST_PORT}"
