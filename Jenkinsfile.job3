@@ -27,7 +27,6 @@ try {
       echo "JOB_BASE_NAME: <<${BUILD_JOB}>>"
     }
     stage('build') {
-      return
       sh "cd ${BUILD_DIR}/${BUILD_JOB};pwd;ls -l;cat -n Dockerfile"
       IMAGE_TAG = "${BUILD_JOB}:${IMAGE_VER}"
       sh "sudo docker build --tag ${IMAGE_TAG} ."
