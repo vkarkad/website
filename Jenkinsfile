@@ -1,9 +1,7 @@
 node('test') {
   stage('checkout') {
-    steps {
       git 'https://github.com/vkarkad/website'
       sh "pwd && ls -la"
-    }
   }
   stage('build') {
       echo "WORKSPACE: ${WORKSPACE}"
