@@ -8,8 +8,8 @@ IMAGE_NAME = 'web'
 MAJOR_VER = '1'
 IMAGE_VER = MAJOR_VER + '.' + env.BUILD_NUMBER
 
-properties([pipelineTriggers([[$class: 'GitHubPushTrigger'])])
-//properties([pipelineTriggers([githubPush()])])
+//properties([pipelineTriggers([[$class: 'GitHubPushTrigger'])])
+properties([pipelineTriggers([githubPush()])])
 
 try {
   node('test') {
