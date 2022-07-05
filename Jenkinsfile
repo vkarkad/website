@@ -1,6 +1,6 @@
 job = env.JOB_BASE_NAME
 num = env.BUILD_NUMBER
-dir = env.WORKSPACE
+dir = '/opt/jenkins/workspace'
 
 node('test') {
   stage('checkout') {
