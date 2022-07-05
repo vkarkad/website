@@ -1,6 +1,6 @@
 job = env.JOB_BASE_NAME
 num = env.BUILD_NUMBER
-wsp = env.WORKSPACE
+dir = env.WORKSPACE
 
 node('test') {
   stage('checkout') {
