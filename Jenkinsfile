@@ -35,10 +35,11 @@ try {
       echo "Website URL: http://${PUBLIC_IP}:${HOST_PORT}"
     }
   }
+  currentBuild.result='SUCCESS'
   echo "In try block: Build result: <<${currentBuild.result}>>"
 } catch(e) {
-  echo "In catch block: Build result: <<${currentBuild.result}>>"
   currentBuild.result='FAILURE'
+  echo "In catch block: Build result: <<${currentBuild.result}>>"
   throw e
 } finally {
   echo "In finally block: Build result: <<${currentBuild.result}>>"
