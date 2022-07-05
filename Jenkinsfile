@@ -3,7 +3,7 @@ num = env.BUILD_NUMBER
 dir = '/opt/jenkins/workspace'
 PUBLIC_IP = ''
 CNTR_PORT = 80
-HOST_PORT = CNTR_PORT + env.BUILD_NUMBER
+HOST_PORT = CNTR_PORT + env.BUILD_NUMBER.toInteger()
 
 node('test') {
   stage('checkout') {
